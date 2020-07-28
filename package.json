@@ -8,12 +8,14 @@
 		"express": "^4.17.1",
 		"express-validator": "^6.6.0",
 		"nodemon": "^2.0.4",
+		"pm2": "^4.4.0",
 		"request": "^2.88.2"
 	},
 	"devDependencies": {},
 	"scripts": {
-		"dev": "node_modules/.bin/concurrently \"nodemon app.js\" \" cd client && npm run start\"",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"client-install": "npm install --prefix client",
+		"dev": "concurrently \"nodemon app.js\" \" cd client && npm run start\"",
+		"start": "pm2 start app.js"
 	},
 	"keywords": [],
 	"author": "",
