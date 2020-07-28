@@ -1,0 +1,8 @@
+# api
+.env
+.env.local
+node_modules
+
+# client
+client/node_modules
+client/build
