@@ -32,9 +32,9 @@ function App() {
 		loadData();
 	}, []);
 
-	const WeatherBoard = ({ city }) => (
+	const WeatherBoard = () => (
 		<div className='weather-board'>
-			<h1>Weather for {city}</h1>
+			<h1>Weather for {weatherData.city_name}</h1>
 			<div className='weather-calendar'>
 				{weatherData.data.map((data) => {
 					return (
@@ -57,11 +57,18 @@ function App() {
 		</div>
 	);
 
-	return !loaded ? (
-		<h5 className='loading'>Loading...</h5>
-	) : (
-		<WeatherBoard city={weatherData.city_name} />
-	);
+	if (!loaded) {
+		return <h5 className='splash loading'>Loading...</h5>;
+	} else if (!weatherData.city_name) {
+		return (
+			<div className='splash'>
+				<h5>Unable to load</h5>
+				<p>{weatherData.message || weatherData.error}</p>
+			</div>
+		);
+	} else {
+		return <WeatherBoard />;
+	}
 }
 
 export default App;
