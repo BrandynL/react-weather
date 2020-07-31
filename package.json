@@ -14,7 +14,7 @@
 	"scripts": {
 		"client-install": "npm install --prefix client && npm run build --prefix client",
 		"dev": "concurrently \"nodemon app.js\" \" cd client && npm run start\"",
-		"start": "npm install && npm run client-install && node app.js"
+		"start": "npm run client-install"
 	},
 	"keywords": [],
 	"author": "",
